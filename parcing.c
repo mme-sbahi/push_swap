@@ -6,7 +6,7 @@
 /*   By: mmesbahi <mmesbahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 12:58:49 by mmesbahi          #+#    #+#             */
-/*   Updated: 2023/03/13 18:30:49 by mmesbahi         ###   ########.fr       */
+/*   Updated: 2023/03/14 19:33:12 by mmesbahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_nb(char **str, t_stack *data)
 			return(0);
 		while (str[i][j])
 		{
-			if (str[i][j] <= '0' || str[i][j] >= '9')
+			if (str[i][j] < '0' || str[i][j] > '9')
 				return (0);
 			j++;
 		}
@@ -115,11 +115,13 @@ int main(int argc, char **argv)
 			exit(1);
 		}
 		data.stack_a = parse_data(str);
-		pb(&data, 0);
-		pb(&data, 0);
-		pb(&data, 0);
-		rrb(&data, 0);
-		printf("%d",kant7wa(5));
+		sorted (&data);
+		sorting(&data);
+		// sorted (&data);
+		// pb(&data, 0);
+		// pb(&data, 0);
+		// pb(&data, 0);
+		// rrb(&data, 0);
 		// while (j < data.size_a)
 		// {
 		// 	printf("%d\n",data.stack_a[j]);

@@ -6,7 +6,7 @@
 #    By: mmesbahi <mmesbahi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/12 13:16:21 by mmesbahi          #+#    #+#              #
-#    Updated: 2023/03/13 16:55:56 by mmesbahi         ###   ########.fr        #
+#    Updated: 2023/03/14 13:30:02 by mmesbahi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RM = rm -rf
 
 SRC = parcing.c utils.c \
 		ft_split.c \
-		ins.c
+		ins.c sorting.c
 
 OBJ = $(SRC:.c=.o)
 
