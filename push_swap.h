@@ -6,7 +6,7 @@
 /*   By: mmesbahi <mmesbahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 13:04:40 by mmesbahi          #+#    #+#             */
-/*   Updated: 2023/03/14 19:30:27 by mmesbahi         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:34:23 by mmesbahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct stack
 	int size_a;
 	int size_b;
 	int pos;
+	int check;
 }t_stack;
 
 
@@ -47,4 +48,18 @@ void	rrb(t_stack *data, int n);
 int	sorted(t_stack	*data);
 void    arr_3(t_stack *data);
 void    sorting(t_stack *data);
+void    indexing(t_stack *data);
+void    push_to_b(int pos, t_stack *data);
+void	sort_100(t_stack *data);
+void	f_stackb(t_stack *data);
+void	ft_search(t_stack *data, int max);
+void	indexing(t_stack *data);
+void	sort_over_100(t_stack *data);
+void	search_small_ae(t_stack *data);
+void	f_stackbe(t_stack *data);
+void	ft_searche(t_stack *data);
+void	indexinge(t_stack *data);
+
+
+
 #endif

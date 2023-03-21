@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parcing.c                                          :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmesbahi <mmesbahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 12:58:49 by mmesbahi          #+#    #+#             */
-/*   Updated: 2023/03/14 19:33:12 by mmesbahi         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:01:20 by mmesbahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,24 +72,23 @@ char	*join_arg(char **s)
 	return (str);
 }
 
-int	*parse_data(char **str)
+void	parse_data(char **str, t_stack *data)
 {
 	int i;
-	int *tab;
 	i = -1;
 	while(str[++i]);
-	tab = (int *)malloc(sizeof(int) * i);
+	data->size_a = i;
+	data->stack_a = (int *)malloc(sizeof(int) * i);
 	i = -1;
 	while (str[++i])
 	{
-		tab[i] = ft_atoi(str[i]);
+		data->stack_a[i] = ft_atoi(str[i]);
 	}
-	return (tab);
 }
-int main(int argc, char **argv)
+
+void	parsing(char **av, t_stack *data)
 {
 	char *s;
-	t_stack data;
 	char **str;
 	int i;
 	int j;
@@ -98,42 +97,51 @@ int main(int argc, char **argv)
 
 	i = 0;
 	s = ft_strdup("");
+	data->size_a = 0; 
+	data->size_b = 0;
+	data->pos = -1;
+	s = join_arg (av);
+	str = ft_split(s, ' ');
+	if (!check_nb(str, data))
+	{
+		puts("error");
+		exit(1);	
+	}
+	if (!check_duplicate(str))
+	{
+		puts("error");
+		exit(1);
+	}
+	parse_data(str, data);
+	if (!sorted(data))
+		exit(0);
+	free (s);
+}
+  
+int main(int argc, char **argv)
+{
+	t_stack data;
+	int i;
+
+	i = 0;
 	if (argc > 2)
 	{
-		data.size_a = 0; 
-		data.size_b = 0;
-		s = join_arg (argv);
-		str = ft_split(s, ' ');
-		if (!check_nb(str, &data))
-		{
-			puts("error");
-			exit(1);	
-		}
-		if (!check_duplicate(str))
-		{
-			puts("error");
-			exit(1);
-		}
-		data.stack_a = parse_data(str);
-		sorted (&data);
-		sorting(&data);
-		// sorted (&data);
-		// pb(&data, 0);
-		// pb(&data, 0);
-		// pb(&data, 0);
-		// rrb(&data, 0);
-		// while (j < data.size_a)
-		// {
-		// 	printf("%d\n",data.stack_a[j]);
-		// 	j++;
-		// }
-		// j = 0;
-		// printf("---------------------\n");
-		// while (j < data.size_b)
-		// {
-		// 	printf("%d\n",data.stack_b[j]);
-		// 	j++;
-		// }
-		free (s);
+			parsing(argv, &data);
+			//indexing
+			// pb(&data,0);
+			if (data.size_a > 5)
+				sort_100(&data);
+			else
+				sorting(&data);
+			// int i = 0;
+			// while (i < data.size_b)
+			// 	printf ("%d\n", data.stack_b[i++]);
+			// sort_over_100(&data);
+			// while (i < data.size_a)
+			// {
+			// 	printf("-->%d  ",data.stack_a[i]);
+			// 	i++;
+			// }
+			// i = 0;
 	}
 }

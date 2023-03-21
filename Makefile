@@ -6,7 +6,7 @@
 #    By: mmesbahi <mmesbahi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/12 13:16:21 by mmesbahi          #+#    #+#              #
-#    Updated: 2023/03/14 13:30:02 by mmesbahi         ###   ########.fr        #
+#    Updated: 2023/03/21 18:39:41 by mmesbahi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ NAME = push_swap
 
 RM = rm -rf
 
-SRC = parcing.c utils.c \
-		ft_split.c \
+SRC = push_swap.c utils.c \
+		ft_split.c sort_100.c\
 		ins.c sorting.c
 
 OBJ = $(SRC:.c=.o)
