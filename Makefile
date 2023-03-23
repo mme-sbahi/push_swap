@@ -1,40 +1,41 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mmesbahi <mmesbahi@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/12 13:16:21 by mmesbahi          #+#    #+#              #
-#    Updated: 2023/03/21 18:39:41 by mmesbahi         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-
-NAME = push_swap
 
 RM = rm -rf
 
+FLAGS = -Wall -Wextra -Werror
+
 SRC = push_swap.c utils.c \
 		ft_split.c sort_100.c\
-		ins.c sorting.c
+		instractions.c sorting.c\
+		instractions_2.c instractions_3.c\
+		parsing.c utils_2.c sort_utils.c\
+		gnl/get_next_line_utils.c 
+SRC_bonus = checker.c utils.c \
+		ft_split.c sort_100.c\
+		instractions.c sorting.c\
+		instractions_2.c instractions_3.c\
+		parsing.c utils_2.c sort_utils.c\
+		gnl/get_next_line.c\
+		gnl/get_next_line_utils.c 
 
-OBJ = $(SRC:.c=.o)
+OBJS = $(SRC:.c=.o)
+OBJS_bonus = $(SRC_bonus:.c=.o)
+all: push_swap
 
-all :$(NAME) 
+push_swap : $(OBJS)
+	$(CC) $(FLAGS) $(OBJS) -o push_swap
 
-
-$(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+bonus : $(OBJS_bonus)
+	$(CC) $(FLAGS) $(OBJS_bonus) -o checker
 
 %.o : %.c push_swap.h
-	$(CC) $(CFLAGS) -c $< -o $@
-
-re: fclean all bonus 
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-		$(RM) $(OBJ)
-fclean : clean
-		$(RM) $(NAME)
+	$(RM) $(OBJS) $(OBJS_bonus)
+
+fclean: clean
+	$(RM) push_swap checker
+
+re: fclean push_swap bonus
